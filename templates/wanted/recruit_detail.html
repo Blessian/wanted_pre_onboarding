@@ -1,0 +1,19 @@
+<ul>
+    <li>회사명: {{ recruit.company_name }}</li>
+    <li>국가: {{ recruit.country }}</li>
+    <li>지역: {{ recruit.region }}</li>
+    <li>채용 포지션: {{ recruit.recruit_position }}</li>
+    <li>채용 보상금: {{ recruit.reward }}</li>
+    <li>사용 기술: {{ recruit.skills }}</li>
+    <li>채용 내용: {{ recruit.content }}</li>
+    <li>회사가 올린 다른 채용 공고
+        <ul>
+        {% for own_recruit in own_recruit_list %}
+            {% if own_recruit.id != recruit.id%}
+            <li><a href="{% url 'wanted:detail' own_recruit.id %}">{{ own_recruit.recruit_position }}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </li>
+</ul>
+<a href="{% url 'wanted:index' %}">목록으로 돌아가기</a>

@@ -1,0 +1,19 @@
+{% if recruit_list %}
+    <ol>
+    {% for recruit in recruit_list %}
+        <li>
+            <ul>
+                <li>채용 포지션: <a href="{% url 'wanted:detail' recruit.id %}">{{ recruit.recruit_position }}</a></li>
+                <li>회사명: {{ recruit.company_name }}</li>
+                <li>국가: {{ recruit.country }}</li>
+                <li>지역: {{ recruit.region }}</li>
+                <li>채용 보상금: {{ recruit.reward }}</li>
+                <li>사용 기술: {{ recruit.skills }}</li>
+            </ul>
+        </li>
+    {% endfor %}
+    </ol>
+{% else %}
+    검색 결과가 없습니다.
+{% endif %}
+<a href="{% url 'wanted:recruit_create' %}">채용 등록</a>
