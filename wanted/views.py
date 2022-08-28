@@ -50,4 +50,6 @@ def modify(request, recruit_id):
 
 
 def delete(request, recruit_id):
-    pass
+    recruit = get_object_or_404(Recruit, pk=recruit_id)
+    recruit.delete()
+    return redirect('wanted:index')
